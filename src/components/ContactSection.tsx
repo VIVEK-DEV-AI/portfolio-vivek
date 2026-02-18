@@ -15,9 +15,9 @@ const ContactSection = () => {
     setLoading(true);
 
     // Initial check for credentials
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const serviceId = "service_pyd39zm";
+    const templateId = "template_yyih26i";
+    const publicKey = "Srs4VjBDvICSwVpJk";
 
     if (!serviceId || !templateId || !publicKey) {
       toast({
