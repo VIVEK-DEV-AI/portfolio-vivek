@@ -54,7 +54,7 @@ const HeroSection = () => {
               <p className="text-muted-foreground text-lg md:text-xl max-w-md leading-relaxed mb-10 relative">
                 <span className="absolute -left-4 top-0 bottom-0 w-1 bg-primary animate-pulse"></span>
                 <span className="font-mono text-primary mr-2">&gt;</span>
-                AI/ML Engineer & Researcher specializing in <span className="text-foreground font-bold">Deep Learning</span>, <span className="text-foreground font-bold">NLP</span>, & <span className="text-foreground font-bold">GenAI</span> — conducting R&D with multiple professors at IIT Madras.
+                AI/ML Engineer & Researcher specializing in <span className="text-foreground font-bold">Machine Learning</span>, <span className="text-foreground font-bold">Deep Learning</span>, & <span className="text-foreground font-bold">GenAI</span>
               </p>
             </motion.div>
 
