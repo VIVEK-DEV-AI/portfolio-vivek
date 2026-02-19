@@ -30,14 +30,18 @@ const HeroSection = () => {
             className="flex flex-col items-start"
           >
             <motion.h1
-              className="text-6xl md:text-8xl lg:text-9xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 leading-[1.1] mb-6 tracking-tighter"
+              className="text-6xl md:text-8xl lg:text-9xl font-serif text-foreground leading-[1.1] mb-6 tracking-tighter"
               initial="hidden"
               animate="visible"
               transition={{ staggerChildren: 0.1 }}
             >
               {sentence.split("").map((char, index) => (
-                <motion.span key={char + "-" + index} variants={letter}>
-                  {char}
+                <motion.span
+                  key={char + "-" + index}
+                  variants={letter}
+                  style={{ display: "inline-block" }}
+                >
+                  {char === " " ? "\u00A0" : char}
                 </motion.span>
               ))}
             </motion.h1>
