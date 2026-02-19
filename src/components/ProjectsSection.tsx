@@ -54,16 +54,16 @@ const ProjectsSection = () => {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 420;
+      const cardWidth = scrollRef.current.querySelector("div")?.offsetWidth || 320;
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
+        left: direction === "left" ? -cardWidth - 24 : cardWidth + 24,
         behavior: "smooth",
       });
     }
   };
 
   return (
-    <section id="projects" className="section-padding">
+    <section id="projects" className="section-padding overflow-hidden">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -96,8 +96,8 @@ const ProjectsSection = () => {
 
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory -mx-4 px-4"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
         >
           {projects.map((project, i) => (
             <motion.div
@@ -107,13 +107,13 @@ const ProjectsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
               whileHover={{ y: -8 }}
-              className="glass rounded-xl p-6 border border-white/5 hover:border-primary/40 transition-all duration-200 group flex flex-col min-w-[380px] max-w-[420px] snap-start flex-shrink-0 relative overflow-hidden"
+              className="glass rounded-xl p-5 sm:p-6 border border-white/5 hover:border-primary/40 transition-all duration-200 group flex flex-col w-[85vw] sm:w-[380px] md:w-[400px] snap-start flex-shrink-0 relative overflow-hidden"
             >
               {/* Glow accent */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="flex items-start justify-between mb-4 relative z-10">
-                <h3 className="text-foreground font-bold text-xl group-hover:text-primary transition-colors duration-200 tracking-tight leading-tight">
+                <h3 className="text-foreground font-bold text-lg sm:text-xl group-hover:text-primary transition-colors duration-200 tracking-tight leading-tight">
                   {project.name}
                 </h3>
                 <a
@@ -127,7 +127,7 @@ const ProjectsSection = () => {
                 </a>
               </div>
 
-              <p className="text-muted-foreground text-sm leading-relaxed mb-5 relative z-10">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5 relative z-10 line-clamp-3">
                 {project.desc}
               </p>
 
@@ -137,7 +137,7 @@ const ProjectsSection = () => {
                   {project.highlights.map((h) => (
                     <li key={h} className="text-sm text-secondary-foreground flex items-start gap-2">
                       <span className="text-primary mt-1 flex-shrink-0">▹</span>
-                      <span>{h}</span>
+                      <span className="break-words">{h}</span>
                     </li>
                   ))}
                 </ul>

@@ -42,16 +42,16 @@ const ExperienceSection = () => {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 480;
+      const cardWidth = scrollRef.current.querySelector("div")?.offsetWidth || 320;
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
+        left: direction === "left" ? -cardWidth - 24 : cardWidth + 24,
         behavior: "smooth",
       });
     }
   };
 
   return (
-    <section id="experience" className="section-padding bg-card/30">
+    <section id="experience" className="section-padding bg-card/30 overflow-hidden">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -84,8 +84,8 @@ const ExperienceSection = () => {
 
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory -mx-4 px-4"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
         >
           {experiences.map((exp, i) => (
             <motion.div
@@ -95,31 +95,31 @@ const ExperienceSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
               whileHover={{ y: -8 }}
-              className="glass rounded-xl p-8 border border-white/5 hover:border-primary/40 transition-all duration-200 relative overflow-hidden group min-w-[400px] max-w-[460px] snap-start flex-shrink-0"
+              className="glass rounded-xl p-5 sm:p-8 border border-white/5 hover:border-primary/40 transition-all duration-200 relative overflow-hidden group w-[85vw] sm:w-[400px] md:w-[440px] snap-start flex-shrink-0"
             >
               {/* Glow accent */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent" />
 
-              <div className="flex items-center gap-4 mb-5 relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary ring-1 ring-primary/20 flex-shrink-0">
-                  <Briefcase size={22} />
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-5 relative z-10">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary ring-1 ring-primary/20 flex-shrink-0">
+                  <Briefcase size={20} />
                 </div>
-                <div className="flex-grow">
-                  <h3 className="text-foreground font-bold text-lg leading-tight">{exp.role}</h3>
-                  <p className="text-primary text-sm font-medium">{exp.company}</p>
+                <div className="flex-grow min-w-0">
+                  <h3 className="text-foreground font-bold text-base sm:text-lg leading-tight truncate">{exp.role}</h3>
+                  <p className="text-primary text-sm font-medium truncate">{exp.company}</p>
                 </div>
-                <div className="px-3 py-1 rounded-full bg-secondary/50 border border-white/5 text-xs font-mono text-muted-foreground whitespace-nowrap flex-shrink-0">
+                <div className="px-3 py-1 rounded-full bg-secondary/50 border border-white/5 text-xs font-mono text-muted-foreground whitespace-nowrap flex-shrink-0 self-start sm:self-auto">
                   {exp.duration}
                 </div>
               </div>
 
               <ul className="space-y-3 relative z-10">
                 {exp.points.map((point, j) => (
-                  <li key={j} className="text-secondary-foreground flex items-start gap-3 text-sm leading-relaxed">
+                  <li key={j} className="text-secondary-foreground flex items-start gap-2 sm:gap-3 text-sm leading-relaxed">
                     <span className="text-primary mt-1 flex-shrink-0">▹</span>
-                    <span>{point}</span>
+                    <span className="break-words">{point}</span>
                   </li>
                 ))}
               </ul>

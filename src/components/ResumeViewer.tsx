@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const ResumeViewer = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const resumeUrl = "/vivek-resume.pdf"; // Correct filename from public folder
+    const resumeUrl = `${import.meta.env.BASE_URL}vivek-resume.pdf`;
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
