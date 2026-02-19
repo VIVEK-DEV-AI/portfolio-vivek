@@ -7,6 +7,12 @@ const ResumeViewer = () => {
     const [isOpen, setIsOpen] = useState(false);
     const resumeUrl = `${import.meta.env.BASE_URL}vivek-resume.pdf`;
 
+    // On mobile, iframes can't render PDFs — use Google Docs viewer instead
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const viewerSrc = isMobile
+        ? `https://docs.google.com/gview?embedded=true&url=https://vivek-dev-ai.github.io/portfolio-vivek/vivek-resume.pdf`
+        : `${resumeUrl}#toolbar=0`;
+
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
@@ -45,9 +51,10 @@ const ResumeViewer = () => {
 
                     <div className="flex-1 bg-white/5 w-full h-full overflow-hidden relative">
                         <iframe
-                            src={`${resumeUrl}#toolbar=0`}
+                            src={viewerSrc}
                             className="w-full h-full"
                             title="Resume PDF"
+                            allow="autoplay"
                         />
                     </div>
                 </div>

@@ -1,19 +1,9 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, Phone, FileText } from "lucide-react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import vivekHero from "@/assets/vivek-hero-nobg.png";
 import ResumeViewer from "./ResumeViewer";
 
 const HeroSection = () => {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["end end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
-
   // Typewriter effect variants
   const sentence = "Vivek R";
   const letter = {
@@ -27,7 +17,6 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      ref={targetRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-10"
     >
       <div className="container mx-auto px-4 z-10">
@@ -35,7 +24,6 @@ const HeroSection = () => {
 
           {/* Left Content */}
           <motion.div
-            style={{ opacity, scale }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
