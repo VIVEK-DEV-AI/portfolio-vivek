@@ -143,3 +143,11 @@
   background: hsl(270 60% 65% / 0.3);
   color: hsl(0 0% 100%);
 }
+
+/* GPU compositing for smoother animations */
+[style*="transform"],
+[style*="opacity"] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

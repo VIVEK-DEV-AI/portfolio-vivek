@@ -41,8 +41,8 @@ const AboutSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
         >
           <p className="text-primary text-sm tracking-widest uppercase mb-2">About Me</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -50,8 +50,8 @@ const AboutSection = () => {
             <span className="text-gradient">End to End</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl text-base md:text-lg leading-relaxed mb-12">
-            AI/ML Engineer & Researcher with deep expertise in deep learning, NLP, computer vision, and generative AI.
-            Currently conducting R&D as Senior AI Engineer at IIT Madras, working under the guidance of distinguished professors
+            AI/ML Engineer &amp; Researcher with deep expertise in deep learning, NLP, computer vision, and generative AI.
+            Currently conducting R&amp;D as Senior AI Engineer at IIT Madras, working under the guidance of distinguished professors
             on AI-driven design generation research. Passionate about AI, robotics, and machine learning — I specialize in taking
             intelligent systems from prototype to production deployment.
           </p>
@@ -61,7 +61,7 @@ const AboutSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {specializations.map((item) => (

@@ -72,8 +72,8 @@ const TechStackSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
         >
           <p className="text-primary text-sm tracking-widest uppercase mb-2">Tech Stack</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">
@@ -82,13 +82,13 @@ const TechStackSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
+          {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
               className="bg-secondary/30 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover:border-primary/20 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-6">

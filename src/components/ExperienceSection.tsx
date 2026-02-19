@@ -56,8 +56,8 @@ const ExperienceSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
           className="flex items-end justify-between mb-12"
         >
           <div>
@@ -90,10 +90,10 @@ const ExperienceSection = () => {
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
               whileHover={{ y: -8 }}
               className="glass rounded-xl p-5 sm:p-8 border border-white/5 hover:border-primary/40 transition-all duration-200 relative overflow-hidden group w-[85vw] sm:w-[400px] md:w-[440px] snap-start flex-shrink-0"
             >
